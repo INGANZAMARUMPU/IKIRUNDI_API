@@ -33,12 +33,14 @@ integuza+Inyitangizo:
 
 Indobeko:
 	- valeur
+	- posteriori
 	- sens_en(plusieurs)
 	- sens_fr(plusieurs)
 	- sens_rn(plusieurs)
 
 Ingobotozo:
 	- valeur
+	- posteriori
 	- sens_en(plusieurs)
 	- sens_fr(plusieurs)
 	- sens_rn(plusieurs)
