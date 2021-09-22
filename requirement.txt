@@ -1,0 +1,8 @@
+uvicorn
+fastapi
+couchbase 
+passlib
+python-multipart
+jinja2
+aiofiles
+pyjwt

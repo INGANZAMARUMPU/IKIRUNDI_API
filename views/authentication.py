@@ -5,10 +5,8 @@ from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 import jwt
 from passlib.context import CryptContext
 from pydantic import BaseModel
-from sqlalchemy.orm import Session
 
-from database import crud, schemas, models
-from database.connection import get_db
+from database import schemas
 
 
 router = APIRouter()
