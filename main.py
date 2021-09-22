@@ -4,11 +4,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi.middleware.cors import CORSMiddleware
 
-from database import models
 from views import *
-from database.connection import engine
-
-models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
@@ -31,8 +27,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(authentication.router, prefix="/api/auth", tags=["authentication"])
-app.include_router(user.router, prefix="/api")
+# app.include_router(authentication.router, prefix="/api/auth", tags=["authentication"])
+# app.include_router(user.router, prefix="/api")
+app.include_router(indobeko.router, prefix="/api")
+app.include_router(ingobotozo.router, prefix="/api")
 
 @app.get("/", response_class=HTMLResponse)
 async def home(request: Request):

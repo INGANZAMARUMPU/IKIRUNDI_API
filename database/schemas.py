@@ -5,23 +5,28 @@ from pydantic import BaseModel, Field
 from enum import Enum, auto
 
 class Roles(Enum):
-	ADMIN = auto()
-	USER = auto()
-	LITTERAIRE = auto()
-	ENSEIGNENT = auto()
+	ADMIN = "admin"
+	USER = "user"
+	LITTERAIRE = "litteraire"
+	ENSEIGNENT = "enseignent"
 
 class WordTypes(Enum):
-	VERBE = auto()
-	NOM = auto()
-	ADJECTIF = auto()
-	INTERJECTION = auto()
-	ADVERBE = auto()
-	INCONNUE = auto()
+	VERBE = "verbe"
+	NOM = "nom"
+	ADJECTIF = "adjectif"
+	INTERJECTION = "interjection"
+	ADVERBE = "adverbe"
+	INCONNUE = "inconnue"
 
 class WordStatus(Enum):
 	WAITING = auto()
 	VALIDATED = auto()
 	REJECTED = auto()
+
+class Imvugo(Enum):
+	IKAKAMISHA = "ikakamisha"
+	ITUVYA = "ituvya"
+	ISANZWE = "isanzwe"
 
 # ========== AUTH =========
 
@@ -44,50 +49,46 @@ class LoginForm(BaseModel):
 
 class UserBase(BaseModel):
 	email: str
-	firstname: Optional[str]
-	lastname: Optional[str]
-	role: Optional[Roles] = Roles.USER
-	words: Optional[int] = 0
-	joined_date: Optional[date] = date.today
-	words: Optional[int] = 0
-	corrections: Optional[int] = 0
-	faults: int
-	is_admin:Optional[bool] = False
-	is_active:Optional[bool] = True
+	fullname: Optional[str]
 
 class UserCreate(UserBase):
 	password: str
 
 class UserUpdate(UserBase):
+	role: Optional[Roles] = Roles.USER
+	joined_date: Optional[date]
+	words: Optional[int] = 0
+	corrections: Optional[int] = 0
+	faults: Optional[int] = 0
+	is_admin:Optional[bool] = False
+	is_active:Optional[bool] = True
 	password:Optional[str]
 
 class User(UserBase):
 	id: int
-	is_active: bool
+	role: Optional[Roles] = Roles.USER
+	joined_date: Optional[date]
+	words: Optional[int] = 0
+	corrections: Optional[int] = 0
+	faults: Optional[int] = 0
+	is_admin:Optional[bool] = False
+	is_active:Optional[bool] = True
 
 # ========== INDOBEKO =========
 
 class Indobeko(BaseModel):
 	valeur:str
-	sens_run:Optional[str]
-	sens_fr:Optional[str]
-	sens_en:Optional[str]
-	run_by:Optional[str]
-	fr_by:Optional[str]
-	en_by:Optional[str]
-	run_by:List[str]
-	fr_by:List[str]
-	en_by:List[str]
-	date:Optional[date] = date.today
+	sens_run:Optional[List[Optional[str]]] = None
+	sens_fr:Optional[List[Optional[str]]] = None
+	sens_en:Optional[List[Optional[str]]] = None
 
 # ========== INGOBOTOZO =========
 
 class Ingobotozo(BaseModel):
 	valeur:str
-	sens_run:Optional[str]
-	sens_fr:Optional[str]
-	sens_en:Optional[str]
-	date:Optional[date] = date.today
+	sens_run:List[str]
+	sens_fr:List[str]
+	sens_en:List[str]
 
 # ========= MOTS =========
 

@@ -1,9 +1,5 @@
 from typing import List, Dict
 from fastapi import APIRouter, HTTPException, Depends
-from sqlalchemy.orm import Session
-
-from database import crud, schemas
-from database.connection import get_db
 
 from .authentication import login_required
 
