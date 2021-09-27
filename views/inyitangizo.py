@@ -2,11 +2,12 @@ from typing import List, Dict
 from fastapi import APIRouter, HTTPException, Depends
 from database import instance, schemas
 from couchbase.bucket import Bucket
+from .authentication import login_required
 
 router = APIRouter(
 	prefix="/inyitangizo",
 	tags=["inyitangizo"],
-	# dependencies=[Depends(login_required)]
+	dependencies=[Depends(login_required)]
 )
 
 @router.post("/", response_model=schemas.Inyitangizo)

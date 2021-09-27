@@ -10,7 +10,7 @@ from . import authentication as Auth
 router = APIRouter(
 	prefix="/user",
 	tags=["users"],
-	# dependencies=[Depends(login_required)]
+	dependencies=[Depends(Auth.login_required)]
 )
 
 # @router.get("/", response_model=List[schemas.User])

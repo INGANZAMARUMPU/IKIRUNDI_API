@@ -42,7 +42,7 @@ class RefreshedToken(BaseModel):
 	token_type: str
 
 class LoginForm(BaseModel):
-	username: str
+	username: EmailStr
 	password: str
 
 # ========== USER =========
