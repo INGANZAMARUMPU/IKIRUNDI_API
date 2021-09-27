@@ -2,7 +2,7 @@ from couchbase.options import LockMode
 from couchbase.bucket import Bucket
 from couchbase.cluster import Cluster, ClusterOptions, PasswordAuthenticator
 
-def get_bucket(bucket_name:str) -> Bucket:
+def getBucket(bucket_name:str) -> Bucket:
     cluster = Cluster(
         'couchbase://localhost',
         ClusterOptions(

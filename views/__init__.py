@@ -1,6 +1,7 @@
 from . import (
-	# user,
-	# authentication
+	user,
+	authentication,
 	indobeko,
+	inyitangizo,
 	ingobotozo
 )

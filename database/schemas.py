@@ -1,7 +1,7 @@
 # a kind of serializers 
 from datetime import datetime, date
 from typing import List, Optional
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, EmailStr
 from enum import Enum, auto
 
 class Roles(Enum):
@@ -48,31 +48,21 @@ class LoginForm(BaseModel):
 # ========== USER =========
 
 class UserBase(BaseModel):
-	email: str
+	email: EmailStr
 	fullname: Optional[str]
 
-class UserCreate(UserBase):
+class UserEdit(UserBase):
 	password: str
 
-class UserUpdate(UserBase):
-	role: Optional[Roles] = Roles.USER
-	joined_date: Optional[date]
-	words: Optional[int] = 0
-	corrections: Optional[int] = 0
-	faults: Optional[int] = 0
-	is_admin:Optional[bool] = False
-	is_active:Optional[bool] = True
-	password:Optional[str]
-
 class User(UserBase):
-	id: int
-	role: Optional[Roles] = Roles.USER
-	joined_date: Optional[date]
-	words: Optional[int] = 0
-	corrections: Optional[int] = 0
-	faults: Optional[int] = 0
-	is_admin:Optional[bool] = False
-	is_active:Optional[bool] = True
+	role: Roles = Roles.USER
+	joined_date: date
+	words: int = 0
+	corrections: int = 0
+	faults: int = 0
+	is_admin:bool = False
+	is_active:bool
+	password:str
 
 # ========== INDOBEKO =========
 
@@ -85,6 +75,14 @@ class Indobeko(BaseModel):
 # ========== INGOBOTOZO =========
 
 class Ingobotozo(BaseModel):
+	valeur:str
+	sens_run:List[str]
+	sens_fr:List[str]
+	sens_en:List[str]
+
+# ========== INGOBOTOZO =========
+
+class Inyitangizo(BaseModel):
 	valeur:str
 	sens_run:List[str]
 	sens_fr:List[str]

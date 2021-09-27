@@ -31,6 +31,8 @@ app.add_middleware(
 # app.include_router(user.router, prefix="/api")
 app.include_router(indobeko.router, prefix="/api")
 app.include_router(ingobotozo.router, prefix="/api")
+app.include_router(inyitangizo.router, prefix="/api")
+app.include_router(user.router, prefix="/api")
 
 @app.get("/", response_class=HTMLResponse)
 async def home(request: Request):
