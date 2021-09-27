@@ -35,7 +35,7 @@ class Token(BaseModel):
 	refresh_token: str
 	token_type: str
 	username: str
-	group:str
+	role: Roles
 
 class RefreshedToken(BaseModel):
 	access_token: str

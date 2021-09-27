@@ -27,8 +27,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# app.include_router(authentication.router, prefix="/api/auth", tags=["authentication"])
-# app.include_router(user.router, prefix="/api")
+app.include_router(authentication.router, prefix="/api/auth", tags=["authentication"])
 app.include_router(indobeko.router, prefix="/api")
 app.include_router(ingobotozo.router, prefix="/api")
 app.include_router(inyitangizo.router, prefix="/api")
