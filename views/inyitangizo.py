@@ -4,13 +4,13 @@ from database import instance, schemas
 from couchbase.bucket import Bucket
 
 router = APIRouter(
-	prefix="/indobeko",
-	tags=["indobeko"],
+	prefix="/inyitangizo",
+	tags=["inyitangizo"],
 	# dependencies=[Depends(login_required)]
 )
 
-@router.post("/", response_model=schemas.Indobeko)
-async def create(item:schemas.Indobeko):
-	bucket:Bucket = instance.getBucket("indobeko")
+@router.post("/", response_model=schemas.Inyitangizo)
+async def create(item:schemas.Ingobotozo):
+	bucket:Bucket = instance.getBucket("inyitangizo")
 	bucket.insert(item.valeur, item.dict())
 	return item

@@ -11,6 +11,6 @@ router = APIRouter(
 
 @router.post("/", response_model=schemas.Ingobotozo)
 async def create(item:schemas.Ingobotozo):
-	bucket:Bucket = instance.get_bucket("ingobotozo")
+	bucket:Bucket = instance.getBucket("ingobotozo")
 	bucket.insert(item.valeur, item.dict())
 	return item
