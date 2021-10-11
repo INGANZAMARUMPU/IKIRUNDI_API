@@ -98,16 +98,25 @@ class Mot(BaseModel):
 	imvugo:Imvugo
 	base:str
 	synonyme:List[str]
-	sens_run:Optional[str]
-	sens_fr:Optional[str]
-	sens_en:Optional[str]
-	run_by:Optional[str]
-	fr_by:Optional[str]
-	en_by:Optional[str]
-	run_validated_by:Optional[str]
-	fr_validated_by:Optional[str]
-	en_validated_by:Optional[str]
 	word_status:WordStatus = WordStatus.WAITING
-	run_status:WordStatus = WordStatus.WAITING
-	fr_status:WordStatus = WordStatus.WAITING
-	en_status:WordStatus = WordStatus.WAITING
+
+class SensRun(BaseModel):
+	mot:str
+	sens:Optional[str]
+	by:Optional[str]
+	status:WordStatus = WordStatus.WAITING
+	validated_by:Optional[str]
+
+class SensFr(BaseModel):
+	mot:str
+	sens:Optional[str]
+	by:Optional[str]
+	status:WordStatus = WordStatus.WAITING
+	validated_by:Optional[str]
+
+class SensEn(BaseModel):
+	mot:str
+	sens:Optional[str]
+	by:Optional[str]
+	status:WordStatus = WordStatus.WAITING
+	validated_by:Optional[str]
